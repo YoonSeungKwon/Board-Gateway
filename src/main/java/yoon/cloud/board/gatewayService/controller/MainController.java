@@ -21,4 +21,9 @@ public class MainController {
     public String getToken(Map<String, Object> map, String subject){
         return jwtUtils.createToken(map, subject);
     }
+
+    @PostMapping("/email")
+    public String getEmail(String token){
+        return jwtUtils.getEmail(token);
+    }
 }

@@ -8,9 +8,18 @@ spring:
     gateway:
       routes:
         - id: user-service
-          uri: http://localhost:8081/
+          uri: lb://user-service
           predicates:
-            - Path=/users/**
+            Path=/users/**
+        - id: test-service
+          uri: lb://test-service
+          predicates:
+            Path=/test/**
+          filters:
+            - JwtAuthenticationFilter
+      discovery:
+        locator:
+          enabled: true
 
 eureka:
   client:

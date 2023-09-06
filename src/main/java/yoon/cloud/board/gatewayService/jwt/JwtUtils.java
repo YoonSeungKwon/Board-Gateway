@@ -37,7 +37,7 @@ public class JwtUtils {
 
     public Claims getClaims(String token){
         return Jwts.parserBuilder().setSigningKey(getKey()).build()
-                .parseClaimsJwt(token).getBody();
+                .parseClaimsJws(token).getBody();
     }
 
     public Date getExpiration(String token){
